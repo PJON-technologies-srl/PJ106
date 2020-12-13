@@ -2,7 +2,7 @@
 ## PJ106
 <img src="images/PJ106-front.jpg" style="display: inline-block;" width="400"><img src="images/PJ106-back.jpg" style="display: inline-block;" width="400">
 
-The PJ106 module is a 10x11.7mm open-source, stand-alone, programmable LED light module based on ATtiny85 with [PJON](https://github.com/gioblu/PJON/) over [PJDL](https://github.com/gioblu/PJON/blob/master/src/strategies/SoftwareBitBang/specification) networking. It needs only 3 pins (PJDL, 5v, GND) to operate transmitting samples and receiving incoming configuration on the same PJON IO pin.
+The PJ106 module is a 30x25.9mm open-source, stand-alone, programmable LED light module based on ATtiny85 with [PJON](https://github.com/gioblu/PJON/) over [PJDL](https://github.com/gioblu/PJON/blob/master/src/strategies/SoftwareBitBang/specification) networking. It needs only 3 pins (PJDL, 5v, GND) to operate transmitting samples and receiving incoming configuration on the same PJON IO pin.
 
 ```cpp  
  _______   _______   _______
