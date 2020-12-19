@@ -5,7 +5,7 @@
 #define SWBB_READ_DELAY 6
 
 // P106 software version
-#define MODULE_VERSION          0
+#define MODULE_VERSION          1
 // P106 by default accepts configuratio change
 #define MODULE_ACCEPT_CONFIG true
 
@@ -26,6 +26,12 @@ uint32_t time;
 bool state;
 
 void setup() {
+  // Setup pin which controls the LED
+  pinMode(0, OUTPUT);
+  // 1 second LED blink to showcase nominal startup
+  digitalWrite(0, HIGH);
+  delay(1000);
+  digitalWrite(0, LOW);
   // Writing default configuration in EEPROM
   if(
     EEPROM.read(4) != 'P' ||
@@ -42,12 +48,6 @@ void setup() {
   bus.begin();
   // Register the receiver callback called when a packet is received
   bus.set_receiver(receiver_function);
-  // Setup pin which controls the LED
-  pinMode(0, OUTPUT);
-  // 1 second LED blink to showcase nominal startup
-  digitalWrite(0, HIGH);
-  delay(1000);
-  digitalWrite(0, LOW);
   time = millis();
 }
 
@@ -68,7 +68,7 @@ void EEPROM_write_default_configuration() {
   EEPROM.update(3, 0);
   // Module name
   EEPROM.update(4, 'P');
-  EEPROM.update(5, 'J')
+  EEPROM.update(5, 'J');
   EEPROM.update(6, '1');
   EEPROM.update(7, '0');
   EEPROM.update(8, '6');
@@ -78,7 +78,7 @@ void EEPROM_write_default_configuration() {
 };
 
 void loop() {
-  bus.receive(100);
+  bus.receive(1000);
   if(interval && ((millis() - time) > interval)) {
     digitalWrite(0, state = !state);
     time = millis();
